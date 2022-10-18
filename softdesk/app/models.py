@@ -31,10 +31,8 @@ class Contributor(models.Model):
         (MANAGER, 'responsable'),
     )
 
-    contributor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="contributor")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="contributor")
     project = models.ForeignKey(Project ,on_delete=models.CASCADE)
-    # à revoir
-    # permission = models.Choices(value=True)
     role = models.CharField(max_length=30, choices=ROLE_CHOICES, verbose_name='Rôle')
 
 
