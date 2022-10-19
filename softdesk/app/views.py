@@ -1,19 +1,19 @@
 from django.shortcuts import render
 
-from rest_framework.exceptions import ValidationError
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from app.serializer import ProjectDetailSerializer, ProjectListSerializer, ContributorListSerializer, ContributorDetailSerializer, IssueListSerializer, IssueDetailSerializer, CommentListSerializer, CommentDetailSerializer
 from app.models import Project, Contributor, Issue, Comment
+from app.permission import ProjectPermissions, ContributorPermission, IssueCommentPermissions
 # Create your views here.
 
 class ProjectsViewset(ModelViewSet):
 
     queryset = Project.objects.all()
     serializer_class = ProjectDetailSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, ProjectPermissions]
 
     def get_queryset(self):
         return Project.objects.filter(contributor__user=self.request.user).order_by('id')
@@ -32,7 +32,7 @@ class ProjectsViewset(ModelViewSet):
 
 class ManageUsersProjectViewset(ModelViewSet):
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, ContributorPermission]
     serializer_class = ContributorListSerializer
     detail_serializer_class = ContributorDetailSerializer
 
@@ -54,7 +54,7 @@ class ManageUsersProjectViewset(ModelViewSet):
 
 
 class IssuesViewset(ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IssueCommentPermissions]
     serializer_class = IssueListSerializer
     detail_serializer_class = IssueDetailSerializer
 
@@ -76,7 +76,7 @@ class IssuesViewset(ModelViewSet):
 
 
 class CommentsViewset(ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IssueCommentPermissions]
     serializer_class = CommentListSerializer
     detail_serializer_class = CommentDetailSerializer
 
