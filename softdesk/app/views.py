@@ -80,7 +80,7 @@ class CommentsViewset(ModelViewSet):
     serializer_class = CommentListSerializer
     detail_serializer_class = CommentDetailSerializer
 
-    def get_query_set(self):
+    def get_queryset(self):
         return Comment.objects.filter(issue=self.kwargs['issue_pk'])
     
 

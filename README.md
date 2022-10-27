@@ -4,7 +4,7 @@ Ceci est une API de suivi de projets pour remonter et suivre les problèmes tech
 
 ## Résumé des fonctionnalités
 
-Un utilisateur peut: 
+Un utilisateur peut : 
 - s'inscrire, se connecter  
 - créer un projet, ajouter des contributeurs au projet
 - les contributeurs du projet peuvent ajouter des problèmes et des commentaires ainsi que voir ceux des autres contributeurs
@@ -24,24 +24,24 @@ $ python manage.py runserver
 
 ## Endpoints disponibles
 
-### connexion et inscription
+### connexion et inscription :
 
 - http://127.0.0.1:8000/api/login/
 - http://127.0.0.1:8000/api/register/  
 
-### projet 
+### projet : 
 http://127.0.0.1:8000/api/projects/
 http://127.0.0.1:8000/api/projects/{{project_id}}/  
 
-### contributeurs d'un projet
+### contributeurs d'un projet :
 http://127.0.0.1:8000/api/projects/{{project_id}}/users/
 http://127.0.0.1:8000/api/projects/{{project_id}}/users/{{user_id}}/
 
-### problèmes d'un projet
+### problèmes d'un projet :
 http://127.0.0.1:8000/api/projects/{{project_id}}/issues/
 http://127.0.0.1:8000/api/projects/{{project_id}}/issues/{{issue_id}}/
 
-### commentaires sur un problème 
+### commentaires sur un problème : 
 http://127.0.0.1:8000/api/projects/{{project_id}}/issues/{{issue_id}}/comments/
 http://127.0.0.1:8000/api/projects/{{project_id}}/issues/{{issue_id}}/comments/{{comment_id}}/
 
@@ -49,4 +49,6 @@ http://127.0.0.1:8000/api/projects/{{project_id}}/issues/{{issue_id}}/comments/{
 ## Documentation
 
 La documentation Postman est disponible en ligne :
+
+https://documenter.getpostman.com/view/13735082/2s8YCkfW2h
 
