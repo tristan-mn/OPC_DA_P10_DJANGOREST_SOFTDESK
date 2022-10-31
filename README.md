@@ -18,6 +18,7 @@ $ cd OPC_DA_P10_DJANGOREST_SOFTDESK
 $ python3 -m venv env (Sous Windows => python -m venv env)
 $ source env/bin/activate (Sous Windows => env\Scripts\activate)
 $ pip install -r requirements.txt
+$ python manage.py migrate
 $ cd softdesk
 $ python manage.py runserver
 ```
